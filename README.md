@@ -37,7 +37,11 @@
    * [Sodium](https://modrinth.com/mod/sodium) 0.5.8+
    * [Iris Shaders](https://modrinth.com/mod/iris) 1.6.0+
    * (опционально) Indium, Lithium — совместимы.
-2. Скачайте **`HYPERREAL-SHADERS-v1.0.zip`** из раздела [Releases](../../releases).
+2. Скачайте **`HYPERREAL-SHADERS-v1.0.zip`**:
+   * из раздела [Releases](../../releases/tag/v1.0), или
+   * прямо из репозитория — [`dist/HYPERREAL-SHADERS-v1.0.zip`](dist/HYPERREAL-SHADERS-v1.0.zip?raw=true).
+
+   Архив собирается заново командой `python3 tools/build_zip.py` (детерминированно, из `shaders/`).
 3. Скопируйте архив **целиком** в папку шейдеров:
    * Windows: `%APPDATA%\.minecraft\shaderpacks\`
    * Linux: `~/.minecraft/shaderpacks/`
