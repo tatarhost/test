@@ -1,0 +1,42 @@
+MIT License
+
+Copyright (c) 2026 HYPERREAL SHADERS contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+Notes on third-party material
+
+This shader pack contains no copied third-party shader code. All GLSL in
+shaders/ was written for this project.
+
+The following well known, publicly documented models and conventions are used
+and implemented independently:
+
+  * ACES filmic tone mapping fitted curve (Krzysztof Narkowicz / Stephen Hill
+    public fits of the ACES reference transform).
+  * Uchimura (Gran Turismo) tone mapping curve, as published by Hajime Uchimura.
+  * labPBR resource pack convention for normal (_n) and specular (_s) maps.
+  * Beer-Lambert absorption, Rayleigh/Mie single scattering, Cook-Torrance GGX
+    BRDF with Smith visibility and Schlick Fresnel, Gerstner style wave sums,
+    percentage closer soft shadows (PCSS) - standard graphics literature.
+  * Iris / OptiFine shader pack format, documented in the public Iris ShaderDoc.
+
+The tools/ directory is development tooling and is not part of the distributed
+shader pack archive.

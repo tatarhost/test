@@ -1,0 +1,263 @@
+# HYPERREAL SHADERS v1.0 - English (en_us)
+# Screens
+screen.SHADOWS=§eShadows
+screen.SHADOWS.comment=Shadow map resolution, range, filtering and contact shadows.
+screen.AMBIENT_OCCLUSION=§eAmbient Occlusion & GI
+screen.AMBIENT_OCCLUSION.comment=Screen space ambient occlusion and one bounce of indirect light.
+screen.REFLECTIONS=§eScreen Space Reflections
+screen.REFLECTIONS.comment=Ray traced reflections for water, glass and wet or polished surfaces.
+screen.WATER=§eWater
+screen.WATER.comment=Waves, refraction, absorption, caustics and underwater fog.
+screen.SKY=§eSky & Atmosphere
+screen.SKY.comment=Physically based atmospheric scattering, stars, milky way and aurora.
+screen.CLOUDS=§eVolumetric Clouds
+screen.CLOUDS.comment=Ray marched cloud deck with self shadowing.
+screen.ATMOSPHERE=§eFog & Light Shafts
+screen.ATMOSPHERE.comment=Aerial perspective, height fog, volumetric god rays and crepuscular rays.
+screen.MATERIALS=§eMaterials
+screen.MATERIALS.comment=PBR resource pack support, wet surfaces, subsurface scattering and emissives.
+screen.ANIMATION=§eVegetation Animation
+screen.ANIMATION.comment=Wind animation for grass, flowers, leaves and water plants.
+screen.POST=§ePost Processing
+screen.POST.comment=Bloom, tone mapping, exposure, lens effects, depth of field and motion blur.
+screen.WEATHER=§eWeather
+screen.WEATHER.comment=Rain wetness, lightning flashes and the dynamic hand light.
+screen.DEBUG=§eDebug
+screen.DEBUG.comment=Visualise internal buffers. Set to 0 for the normal image.
+
+# ---------------------------------------------------------------------------
+# SHADOWS
+# ---------------------------------------------------------------------------
+option.SHADOW_FILTER=Shadow Filter Quality
+option.SHADOW_FILTER.comment=Number of PCF taps used to filter the shadow map edge.
+value.SHADOW_FILTER.0=Fast (1 tap)
+value.SHADOW_FILTER.1=Low (4 taps)
+value.SHADOW_FILTER.2=High (9 taps)
+value.SHADOW_FILTER.3=Ultra (17 taps)
+option.SHADOW_PCSS=Soft Shadows (PCSS)
+option.SHADOW_PCSS.comment=Percentage closer soft shadows: blockers are searched to build a physically sized penumbra.
+option.SHADOW_SOFTNESS=Shadow Softness
+option.SHADOW_SOFTNESS.comment=Size of the light source used for the penumbra estimate.
+option.SHADOW_NORMAL_OFFSET=Normal Offset Bias
+option.SHADOW_NORMAL_OFFSET.comment=Offsets the shadow lookup along the surface normal to remove shadow acne.
+option.SHADOW_DISTORTION=Shadow Distortion
+option.SHADOW_DISTORTION.comment=Spends more shadow map texels close to the camera.
+option.CONTACT_SHADOWS=Contact Shadows
+option.CONTACT_SHADOWS.comment=Short screen space ray march towards the sun for small scale, contact hardening shadows.
+option.COLORED_SHADOWS=Coloured Shadows
+option.COLORED_SHADOWS.comment=Reserves the shadow colour buffer for translucent light tinting.
+
+# ---------------------------------------------------------------------------
+# AMBIENT OCCLUSION / GI
+# ---------------------------------------------------------------------------
+option.SSAO=Ambient Occlusion
+option.SSAO.comment=Screen space ambient occlusion in creases, corners and under foliage.
+option.SSAO_STRENGTH=Ambient Occlusion Strength
+option.SSAO_STRENGTH.comment=How strongly occlusion darkens the scene.
+option.SSAO_RADIUS=Ambient Occlusion Radius
+option.SSAO_RADIUS.comment=World space radius of the occlusion search in blocks.
+option.SSGI=Global Illumination
+option.SSGI.comment=One bounce of screen space indirect light gathered from nearby lit surfaces.
+option.SSGI_STRENGTH=Global Illumination Strength
+option.SSGI_STRENGTH.comment=Intensity of the indirect light contribution.
+
+# ---------------------------------------------------------------------------
+# REFLECTIONS
+# ---------------------------------------------------------------------------
+option.REFLECTIONS=Screen Space Reflections
+option.REFLECTIONS.comment=Enables screen space ray tracing for reflective surfaces.
+option.REFLECTION_QUALITY=Reflection Quality
+option.REFLECTION_QUALITY.comment=Ray march steps. Higher values resolve smaller details further away.
+option.REFLECTION_ROUGH=Rough Reflections
+option.REFLECTION_ROUGH.comment=Jitters the reflection ray so rough materials get blurred reflections.
+
+# ---------------------------------------------------------------------------
+# WATER
+# ---------------------------------------------------------------------------
+option.WATER_WAVES=Water Waves
+option.WATER_WAVES.comment=Vertex displaced ocean waves with analytic normals and capillary ripples.
+option.WATER_WAVE_HEIGHT=Wave Height
+option.WATER_WAVE_HEIGHT.comment=Vertical amplitude of the waves in blocks.
+option.WATER_WAVE_SPEED=Wave Speed
+option.WATER_WAVE_SPEED.comment=Animation speed of the wave field.
+option.WATER_REFLECTIONS=Water Reflections
+option.WATER_REFLECTIONS.comment=Screen space reflections on water with the sky as fallback.
+option.WATER_REFRACTION=Water Refraction
+option.WATER_REFRACTION.comment=Distorts the refracted image below the surface using the wave normal.
+option.WATER_CAUSTICS=Caustics
+option.WATER_CAUSTICS.comment=Animated light patterns projected on the bottom of shallow water.
+option.WATER_FOG=Underwater Fog
+option.WATER_FOG.comment=Absorption and scattering while the camera is submerged.
+option.WATER_FOG_DENSITY=Underwater Fog Density
+option.WATER_FOG_DENSITY.comment=Density of the underwater medium.
+
+# ---------------------------------------------------------------------------
+# SKY / ATMOSPHERE
+# ---------------------------------------------------------------------------
+option.ATMOSPHERE_QUALITY=Atmosphere Quality
+option.ATMOSPHERE_QUALITY.comment=Integration steps of the single scattering sky model.
+value.ATMOSPHERE_QUALITY.0=Low
+value.ATMOSPHERE_QUALITY.1=Medium
+value.ATMOSPHERE_QUALITY.2=High
+option.NIGHT_SKY=Moon
+option.NIGHT_SKY.comment=Renders the moon with its correct phase.
+option.STARS=Stars & Milky Way
+option.STARS.comment=Procedural star field with twinkling and the milky way band.
+option.AURORA=Aurora
+option.AURORA.comment=Stylised northern lights in the night sky.
+
+# ---------------------------------------------------------------------------
+# CLOUDS
+# ---------------------------------------------------------------------------
+option.CLOUDS_VOLUMETRIC=Volumetric Clouds
+option.CLOUDS_VOLUMETRIC.comment=Enables the ray marched cloud deck. Vanilla clouds are always disabled.
+option.CLOUD_QUALITY=Cloud Quality
+value.CLOUD_QUALITY.0=Off
+value.CLOUD_QUALITY.1=Low
+value.CLOUD_QUALITY.2=High
+value.CLOUD_QUALITY.3=Ultra
+option.CLOUD_QUALITY.comment=Ray march steps and detail octaves used for the clouds.
+option.CLOUD_COVERAGE=Cloud Coverage
+option.CLOUD_COVERAGE.comment=Amount of sky covered by the cloud layer.
+option.CLOUD_HEIGHT=Cloud Height
+option.CLOUD_HEIGHT.comment=Thickness of the cloud deck.
+option.CLOUD_SHADOWS=Cloud Shadows
+option.CLOUD_SHADOWS.comment=Clouds cast moving shadows on the terrain.
+option.CLOUD_FOG=Cloud Haze
+option.CLOUD_FOG.comment=Fades distant clouds into the atmospheric haze.
+
+# ---------------------------------------------------------------------------
+# FOG / LIGHT SHAFTS
+# ---------------------------------------------------------------------------
+option.VOLUMETRIC_LIGHT=Volumetric Light
+option.VOLUMETRIC_LIGHT.comment=God rays through leaves, windows and caves.
+option.VOLUMETRIC_QUALITY=Volumetric Quality
+value.VOLUMETRIC_QUALITY.0=Off
+value.VOLUMETRIC_QUALITY.1=Low
+value.VOLUMETRIC_QUALITY.2=High
+value.VOLUMETRIC_QUALITY.3=Ultra
+option.VOLUMETRIC_QUALITY.comment=Number of scattering samples along the view ray.
+option.VOLUMETRIC_FOG=Volumetric Fog
+option.VOLUMETRIC_FOG.comment=Height based fog that interacts with the sun.
+option.FOG_DENSITY=Fog Density
+option.FOG_DENSITY.comment=Overall density of the atmospheric fog.
+option.MORNING_FOG=Morning Mist
+option.MORNING_FOG.comment=Thicker ground fog around sunrise.
+option.UNDERWATER_GODRAYS=Underwater God Rays
+option.UNDERWATER_GODRAYS.comment=Light shafts while the camera is submerged.
+
+# ---------------------------------------------------------------------------
+# MATERIALS
+# ---------------------------------------------------------------------------
+option.PBR_RESOURCEPACK=PBR Resource Pack Support
+option.PBR_RESOURCEPACK.comment=Uses labPBR style _n and _s maps when the resource pack provides them.
+option.NORMAL_MAP_STRENGTH=Normal Map Strength
+option.NORMAL_MAP_STRENGTH.comment=Intensity of PBR normal maps.
+option.SUBSURFACE_SCATTERING=Subsurface Scattering
+option.SUBSURFACE_SCATTERING.comment=Light bleeding through leaves and thin plants.
+option.EMISSIVE_BLOCKS=Emissive Blocks
+option.EMISSIVE_BLOCKS.comment=Glowing blocks (glowstone, lava, sea lanterns, ...) emit their own light.
+option.WET_SURFACES=Wet Surfaces
+option.WET_SURFACES.comment=Rain darkens and glosses surfaces that are exposed to the sky.
+option.MATERIAL_SMOOTHNESS=Material Smoothness
+option.MATERIAL_SMOOTHNESS.comment=Scales the smoothness / roughness of all materials.
+
+# ---------------------------------------------------------------------------
+# ANIMATION
+# ---------------------------------------------------------------------------
+option.WAVING_PLANTS=Waving Plants
+option.WAVING_PLANTS.comment=Grass, flowers and crops react to the wind.
+option.WAVING_LEAVES=Waving Leaves
+option.WAVING_LEAVES.comment=Leaf blocks sway as a whole so neighbouring blocks never tear.
+option.WAVING_WATER_PLANTS=Waving Water Plants
+option.WAVING_WATER_PLANTS.comment=Kelp and seagrass sway with the current.
+option.WIND_STRENGTH=Wind Strength
+option.WIND_STRENGTH.comment=Global animation amplitude.
+option.WIND_GUSTS=Wind Gusts
+option.WIND_GUSTS.comment=Large scale gusts modulate the wind strength over the world.
+
+# ---------------------------------------------------------------------------
+# POST
+# ---------------------------------------------------------------------------
+option.BLOOM=Bloom
+option.BLOOM.comment=Soft glow around bright objects.
+option.BLOOM_STRENGTH=Bloom Strength
+option.BLOOM_STRENGTH.comment=Intensity of the bloom.
+option.EXPOSURE=Exposure
+option.EXPOSURE.comment=Manual exposure multiplier.
+option.AUTO_EXPOSURE=Auto Exposure
+option.AUTO_EXPOSURE.comment=Adapts the exposure to the average scene luminance.
+option.TONEMAP_MODE=Tone Mapping
+value.TONEMAP_MODE.0=Reinhard
+value.TONEMAP_MODE.1=ACES
+value.TONEMAP_MODE.2=Uchimura
+option.TONEMAP_MODE.comment=HDR tone mapping curve.
+option.COLOR_GRADE=Colour Profile
+value.COLOR_GRADE.0=Neutral
+value.COLOR_GRADE.1=Cinematic
+value.COLOR_GRADE.2=Warm
+value.COLOR_GRADE.3=Cool
+option.COLOR_GRADE.comment=Split toning and colour profile of the final image.
+option.SATURATION=Saturation
+option.SATURATION.comment=Colour saturation of the final image.
+option.CONTRAST=Contrast
+option.CONTRAST.comment=Contrast of the final image.
+option.VIGNETTE=Vignette
+option.VIGNETTE.comment=Darkened corners.
+option.VIGNETTE_STRENGTH=Vignette Strength
+option.VIGNETTE_STRENGTH.comment=Intensity of the vignette.
+option.CHROMATIC_ABERRATION=Chromatic Aberration
+option.CHROMATIC_ABERRATION.comment=Subtle lens colour fringing towards the screen edges.
+option.LENS_FLARE=Lens Flare
+option.LENS_FLARE.comment=Ghosts and halo when looking towards the sun.
+option.SHARPEN=Sharpening
+option.SHARPEN.comment=Contrast adaptive sharpening to restore detail after tone mapping.
+option.FILM_GRAIN=Film Grain
+option.FILM_GRAIN.comment=Subtle analog grain for screenshots.
+option.GRAIN_STRENGTH=Grain Strength
+option.GRAIN_STRENGTH.comment=Intensity of the film grain.
+option.DEPTH_OF_FIELD=Depth of Field
+option.DEPTH_OF_FIELD.comment=Cinematic background blur.
+option.DOF_STRENGTH=Depth of Field Strength
+option.DOF_STRENGTH.comment=Size of the circle of confusion.
+option.DOF_FOCUS=Focus Distance
+option.DOF_FOCUS.comment=Moves the focus plane relative to the distance of the screen centre.
+option.MOTION_BLUR=Motion Blur
+option.MOTION_BLUR.comment=Camera motion blur from reprojection. Can be disabled at any time.
+option.MOTION_BLUR_STRENGTH=Motion Blur Strength
+option.MOTION_BLUR_STRENGTH.comment=Length of the motion blur.
+
+# ---------------------------------------------------------------------------
+# WEATHER / MISC
+# ---------------------------------------------------------------------------
+option.WET_RAIN_SURFACES=Rain Wetness
+option.WET_RAIN_SURFACES.comment=Surfaces become glossy while it rains and dry out afterwards.
+option.LIGHTNING_FLASH=Lightning Flash
+option.LIGHTNING_FLASH.comment=Thunder storms brighten the direct light like real lightning.
+option.HAND_LIGHT=Dynamic Hand Light
+option.HAND_LIGHT.comment=The held light source (torch, lantern, ...) illuminates the surroundings.
+option.DEBUG_VIEW=Debug View
+value.DEBUG_VIEW.0=Off
+value.DEBUG_VIEW.1=Depth
+value.DEBUG_VIEW.2=Normals
+value.DEBUG_VIEW.3=Bloom
+value.DEBUG_VIEW.4=Material
+value.DEBUG_VIEW.5=Light Levels
+value.DEBUG_VIEW.6=Surface Flags
+option.DEBUG_VIEW.comment=Shows internal buffers instead of the final image.
+
+# ---------------------------------------------------------------------------
+# Presets
+# ---------------------------------------------------------------------------
+profile.LOW=§aLow
+profile.LOW.comment=Weak integrated and older graphics cards. All expensive effects off.
+profile.MEDIUM=§aMedium
+profile.MEDIUM.comment=Mid range GPUs. Shadows, water and light shafts on, clouds and GI light.
+profile.HIGH=§eHigh
+profile.HIGH.comment=Good gaming GPUs. Everything on at balanced quality.
+profile.ULTRA=§6Ultra
+profile.ULTRA.comment=High end GPUs. More shadow resolution, more ray march steps.
+profile.EXTREME=§cExtreme
+profile.EXTREME.comment=Maximum quality. 4096 shadow map, 256 block shadow distance.
+profile.CINEMATIC=§dCinematic
+profile.CINEMATIC.comment=Maximum visual impact for screenshots: depth of field, motion blur, grain.

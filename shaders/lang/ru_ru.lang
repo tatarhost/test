@@ -1,0 +1,263 @@
+# HYPERREAL SHADERS v1.0 - Русский (ru_ru)
+# Экраны
+screen.SHADOWS=§eТени
+screen.SHADOWS.comment=Разрешение карты теней, дальность, фильтрация и контактные тени.
+screen.AMBIENT_OCCLUSION=§eЗатенение и глобальное освещение
+screen.AMBIENT_OCCLUSION.comment=Экранное затенение в углублениях и один отскок непрямого света.
+screen.REFLECTIONS=§eОтражения в экранном пространстве
+screen.REFLECTIONS.comment=Трассировка отражений для воды, стекла, мокрых и полированных поверхностей.
+screen.WATER=§eВода
+screen.WATER.comment=Волны, преломление, поглощение, каустики и подводный туман.
+screen.SKY=§eНебо и атмосфера
+screen.SKY.comment=Физически корректное рассеяние, звёзды, млечный путь и северное сияние.
+screen.CLOUDS=§eОбъёмные облака
+screen.CLOUDS.comment=Рейтрейсинг облачного слоя с самозатенением.
+screen.ATMOSPHERE=§eТуман и лучи света
+screen.ATMOSPHERE.comment=Воздушная перспектива, высотный туман, объёмные и крепускулярные лучи.
+screen.MATERIALS=§eМатериалы
+screen.MATERIALS.comment=Поддержка PBR-ресурспаков, мокрые поверхности, подповерхностное рассеяние, свечение.
+screen.ANIMATION=§eАнимация растительности
+screen.ANIMATION.comment=Анимация ветра для травы, цветов, листвы и водных растений.
+screen.POST=§eПостобработка
+screen.POST.comment=Bloom, тонмаппинг, экспозиция, эффекты линзы, глубина резкости и смаз.
+screen.WEATHER=§eПогода
+screen.WEATHER.comment=Влажность от дождя, вспышки молний и динамический свет в руке.
+screen.DEBUG=§eОтладка
+screen.DEBUG.comment=Просмотр внутренних буферов. 0 — обычная картинка.
+
+# ---------------------------------------------------------------------------
+# ТЕНИ
+# ---------------------------------------------------------------------------
+option.SHADOW_FILTER=Качество фильтрации теней
+option.SHADOW_FILTER.comment=Количество выборок PCF при сглаживании края тени.
+value.SHADOW_FILTER.0=Быстро (1 выборка)
+value.SHADOW_FILTER.1=Низко (4 выборки)
+value.SHADOW_FILTER.2=Высоко (9 выборок)
+value.SHADOW_FILTER.3=Ультра (17 выборок)
+option.SHADOW_PCSS=Мягкие тени (PCSS)
+option.SHADOW_PCSS.comment=Percentage closer soft shadows: поиск перекрытий даёт физически корректную полутень.
+option.SHADOW_SOFTNESS=Мягкость теней
+option.SHADOW_SOFTNESS.comment=Размер источника света для расчёта полутени.
+option.SHADOW_NORMAL_OFFSET=Смещение по нормали
+option.SHADOW_NORMAL_OFFSET.comment=Смещает выборку тени вдоль нормали и убирает «акне».
+option.SHADOW_DISTORTION=Искажение карты теней
+option.SHADOW_DISTORTION.comment=Больше текселей теневой карты у камеры.
+option.CONTACT_SHADOWS=Контактные тени
+option.CONTACT_SHADOWS.comment=Короткая трассировка в экранном пространстве к солнцу для мелких деталей.
+option.COLORED_SHADOWS=Цветные тени
+option.COLORED_SHADOWS.comment=Резервирует буфер цвета тени для окрашивания света сквозь цветные блоки.
+
+# ---------------------------------------------------------------------------
+# ЗАТЕНЕНИЕ / GI
+# ---------------------------------------------------------------------------
+option.SSAO=Экранное затенение
+option.SSAO.comment=Затенение в щелях, углах и под листвой.
+option.SSAO_STRENGTH=Сила затенения
+option.SSAO_STRENGTH.comment=Насколько сильно затенение затемняет сцену.
+option.SSAO_RADIUS=Радиус затенения
+option.SSAO_RADIUS.comment=Радиус поиска в блоках.
+option.SSGI=Глобальное освещение
+option.SSGI.comment=Один отскок непрямого света от освещённых поверхностей в экранном пространстве.
+option.SSGI_STRENGTH=Сила непрямого света
+option.SSGI_STRENGTH.comment=Интенсивность вклада непрямого света.
+
+# ---------------------------------------------------------------------------
+# ОТРАЖЕНИЯ
+# ---------------------------------------------------------------------------
+option.REFLECTIONS=Отражения в экранном пространстве
+option.REFLECTIONS.comment=Трассировка отражений для отражающих поверхностей.
+option.REFLECTION_QUALITY=Качество отражений
+option.REFLECTION_QUALITY.comment=Количество шагов трассировки. Больше — мельче детали и дальше.
+option.REFLECTION_ROUGH=Шероховатые отражения
+option.REFLECTION_ROUGH.comment=Разброс луча отражения даёт размытие на матовых материалах.
+
+# ---------------------------------------------------------------------------
+# ВОДА
+# ---------------------------------------------------------------------------
+option.WATER_WAVES=Волны на воде
+option.WATER_WAVES.comment=Смещение вершин волнами с аналитическими нормалями и мелкой рябью.
+option.WATER_WAVE_HEIGHT=Высота волн
+option.WATER_WAVE_HEIGHT.comment=Амплитуда волн в блоках.
+option.WATER_WAVE_SPEED=Скорость волн
+option.WATER_WAVE_SPEED.comment=Скорость движения волнового поля.
+option.WATER_REFLECTIONS=Отражения на воде
+option.WATER_REFLECTIONS.comment=Экранные отражения на воде, небо — как запасной вариант.
+option.WATER_REFRACTION=Преломление в воде
+option.WATER_REFRACTION.comment=Искажение изображения под водой по нормали волны.
+option.WATER_CAUSTICS=Каустики
+option.WATER_CAUSTICS.comment=Анимированные световые узоры на дне мелкой воды.
+option.WATER_FOG=Подводный туман
+option.WATER_FOG.comment=Поглощение и рассеяние при погружении камеры.
+option.WATER_FOG_DENSITY=Плотность подводного тумана
+option.WATER_FOG_DENSITY.comment=Плотность подводной среды.
+
+# ---------------------------------------------------------------------------
+# НЕБО / АТМОСФЕРА
+# ---------------------------------------------------------------------------
+option.ATMOSPHERE_QUALITY=Качество атмосферы
+option.ATMOSPHERE_QUALITY.comment=Количество шагов интегрирования модели однократного рассеяния.
+value.ATMOSPHERE_QUALITY.0=Низкое
+value.ATMOSPHERE_QUALITY.1=Среднее
+value.ATMOSPHERE_QUALITY.2=Высокое
+option.NIGHT_SKY=Луна
+option.NIGHT_SKY.comment=Отрисовка луны с правильной фазой.
+option.STARS=Звёзды и млечный путь
+option.STARS.comment=Процедурное звёздное поле с мерцанием и полосой млечного пути.
+option.AURORA=Северное сияние
+option.AURORA.comment=Стилизованное полярное сияние ночью.
+
+# ---------------------------------------------------------------------------
+# ОБЛАКА
+# ---------------------------------------------------------------------------
+option.CLOUDS_VOLUMETRIC=Объёмные облака
+option.CLOUDS_VOLUMETRIC.comment=Рейтрейсинг облачного слоя. Ванильные облака всегда отключены.
+option.CLOUD_QUALITY=Качество облаков
+value.CLOUD_QUALITY.0=Выкл.
+value.CLOUD_QUALITY.1=Низкое
+value.CLOUD_QUALITY.2=Высокое
+value.CLOUD_QUALITY.3=Ультра
+option.CLOUD_QUALITY.comment=Количество шагов трассировки и октав детализации облаков.
+option.CLOUD_COVERAGE=Покрытие облаками
+option.CLOUD_COVERAGE.comment=Доля неба, закрытая облаками.
+option.CLOUD_HEIGHT=Толщина облаков
+option.CLOUD_HEIGHT.comment=Толщина облачного слоя.
+option.CLOUD_SHADOWS=Тени от облаков
+option.CLOUD_SHADOWS.comment=Облака отбрасывают движущиеся тени на землю.
+option.CLOUD_FOG=Дымка у облаков
+option.CLOUD_FOG.comment=Растворение далёких облаков в атмосферной дымке.
+
+# ---------------------------------------------------------------------------
+# ТУМАН / ЛУЧИ
+# ---------------------------------------------------------------------------
+option.VOLUMETRIC_LIGHT=Объёмный свет
+option.VOLUMETRIC_LIGHT.comment=Лучи света сквозь листву, окна и пещеры.
+option.VOLUMETRIC_QUALITY=Качество объёмного света
+value.VOLUMETRIC_QUALITY.0=Выкл.
+value.VOLUMETRIC_QUALITY.1=Низкое
+value.VOLUMETRIC_QUALITY.2=Высокое
+value.VOLUMETRIC_QUALITY.3=Ультра
+option.VOLUMETRIC_QUALITY.comment=Количество выборок рассеяния вдоль луча зрения.
+option.VOLUMETRIC_FOG=Объёмный туман
+option.VOLUMETRIC_FOG.comment=Высотный туман, реагирующий на солнце.
+option.FOG_DENSITY=Плотность тумана
+option.FOG_DENSITY.comment=Общая плотность атмосферного тумана.
+option.MORNING_FOG=Утренняя дымка
+option.MORNING_FOG.comment=Более густой приземный туман на рассвете.
+option.UNDERWATER_GODRAYS=Подводные лучи
+option.UNDERWATER_GODRAYS.comment=Лучи света под водой.
+
+# ---------------------------------------------------------------------------
+# МАТЕРИАЛЫ
+# ---------------------------------------------------------------------------
+option.PBR_RESOURCEPACK=Поддержка PBR-ресурспаков
+option.PBR_RESOURCEPACK.comment=Использует карты _n и _s в стиле labPBR, если ресурспак их содержит.
+option.NORMAL_MAP_STRENGTH=Сила карт нормалей
+option.NORMAL_MAP_STRENGTH.comment=Интенсивность PBR-нормалей.
+option.SUBSURFACE_SCATTERING=Подповерхностное рассеяние
+option.SUBSURFACE_SCATTERING.comment=Свет проходит сквозь листву и тонкие растения.
+option.EMISSIVE_BLOCKS=Светящиеся блоки
+option.EMISSIVE_BLOCKS.comment=Светокамень, лава, морской фонарь и подобные блоки светятся сами.
+option.WET_SURFACES=Мокрые поверхности
+option.WET_SURFACES.comment=Дождь затемняет и делает глянцевыми поверхности под открытым небом.
+option.MATERIAL_SMOOTHNESS=Гладкость материалов
+option.MATERIAL_SMOOTHNESS.comment=Масштабирует гладкость (шероховатость) всех материалов.
+
+# ---------------------------------------------------------------------------
+# АНИМАЦИЯ
+# ---------------------------------------------------------------------------
+option.WAVING_PLANTS=Колышущиеся растения
+option.WAVING_PLANTS.comment=Трава, цветы и посевы реагируют на ветер.
+option.WAVING_LEAVES=Колышущаяся листва
+option.WAVING_LEAVES.comment=Блок листвы качается целиком, поэтому соседние блоки не рвутся.
+option.WAVING_WATER_PLANTS=Водные растения
+option.WAVING_WATER_PLANTS.comment=Ламинария и морская трава качаются течением.
+option.WIND_STRENGTH=Сила ветра
+option.WIND_STRENGTH.comment=Общая амплитуда анимации.
+option.WIND_GUSTS=Порывы ветра
+option.WIND_GUSTS.comment=Крупномасштабные порывы модулируют силу ветра в мире.
+
+# ---------------------------------------------------------------------------
+# ПОСТОБРАБОТКА
+# ---------------------------------------------------------------------------
+option.BLOOM=Свечение (Bloom)
+option.BLOOM.comment=Мягкое свечение вокруг ярких объектов.
+option.BLOOM_STRENGTH=Сила свечения
+option.BLOOM_STRENGTH.comment=Интенсивность свечения.
+option.EXPOSURE=Экспозиция
+option.EXPOSURE.comment=Ручной множитель экспозиции.
+option.AUTO_EXPOSURE=Автоэкспозиция
+option.AUTO_EXPOSURE.comment=Подстраивает экспозицию под среднюю яркость сцены.
+option.TONEMAP_MODE=Тонмаппинг
+value.TONEMAP_MODE.0=Reinhard
+value.TONEMAP_MODE.1=ACES
+value.TONEMAP_MODE.2=Uchimura
+option.TONEMAP_MODE.comment=Кривая отображения HDR в LDR.
+option.COLOR_GRADE=Цветовой профиль
+value.COLOR_GRADE.0=Нейтральный
+value.COLOR_GRADE.1=Кинематографичный
+value.COLOR_GRADE.2=Тёплый
+value.COLOR_GRADE.3=Холодный
+option.COLOR_GRADE.comment=Раздельное тонирование и цветовой профиль итоговой картинки.
+option.SATURATION=Насыщенность
+option.SATURATION.comment=Насыщенность цветов итогового изображения.
+option.CONTRAST=Контраст
+option.CONTRAST.comment=Контраст итогового изображения.
+option.VIGNETTE=Виньетка
+option.VIGNETTE.comment=Затемнение по углам экрана.
+option.VIGNETTE_STRENGTH=Сила виньетки
+option.VIGNETTE_STRENGTH.comment=Интенсивность виньетки.
+option.CHROMATIC_ABERRATION=Хроматическая аберрация
+option.CHROMATIC_ABERRATION.comment=Лёгкое окрашивание краёв кадра, как у настоящей линзы.
+option.LENS_FLARE=Блик объектива
+option.LENS_FLARE.comment=Призраки и ореол при взгляде на солнце.
+option.SHARPEN=Повышение резкости
+option.SHARPEN.comment=Адаптивное к контрасту усиление деталей после тонмаппинга.
+option.FILM_GRAIN=Зерно плёнки
+option.FILM_GRAIN.comment=Аккуратное аналоговое зерно для скриншотов.
+option.GRAIN_STRENGTH=Сила зерна
+option.GRAIN_STRENGTH.comment=Интенсивность зерна.
+option.DEPTH_OF_FIELD=Глубина резкости
+option.DEPTH_OF_FIELD.comment=Кинематографичное размытие фона.
+option.DOF_STRENGTH=Сила размытия
+option.DOF_STRENGTH.comment=Размер кружка рассеяния.
+option.DOF_FOCUS=Дистанция фокуса
+option.DOF_FOCUS.comment=Сдвигает плоскость фокуса относительно расстояния до центра экрана.
+option.MOTION_BLUR=Смаз движения
+option.MOTION_BLUR.comment=Смаз от движения камеры по репроекции. Отключается в любой момент.
+option.MOTION_BLUR_STRENGTH=Сила смаза
+option.MOTION_BLUR_STRENGTH.comment=Длина смаза движения.
+
+# ---------------------------------------------------------------------------
+# ПОГОДА / ПРОЧЕЕ
+# ---------------------------------------------------------------------------
+option.WET_RAIN_SURFACES=Влажность от дождя
+option.WET_RAIN_SURFACES.comment=Во время дождя поверхности становятся глянцевыми, затем высыхают.
+option.LIGHTNING_FLASH=Вспышки молний
+option.LIGHTNING_FLASH.comment=Гроза усиливает прямой свет, как настоящая молния.
+option.HAND_LIGHT=Динамический свет в руке
+option.HAND_LIGHT.comment=Предмет-источник света (факел, фонарь) освещает окружение.
+option.DEBUG_VIEW=Отладочный буфер
+value.DEBUG_VIEW.0=Выкл.
+value.DEBUG_VIEW.1=Глубина
+value.DEBUG_VIEW.2=Нормали
+value.DEBUG_VIEW.3=Bloom
+value.DEBUG_VIEW.4=Материал
+value.DEBUG_VIEW.5=Уровни света
+value.DEBUG_VIEW.6=Флаги поверхности
+option.DEBUG_VIEW.comment=Показывает внутренние буферы вместо итогового изображения.
+
+# ---------------------------------------------------------------------------
+# Пресеты
+# ---------------------------------------------------------------------------
+profile.LOW=§aНизкий
+profile.LOW.comment=Слабые встроенные и старые видеокарты. Все дорогие эффекты выключены.
+profile.MEDIUM=§aСредний
+profile.MEDIUM.comment=Для средних видеокарт. Тени, вода и лучи включены, облака и GI облегчены.
+profile.HIGH=§eВысокий
+profile.HIGH.comment=Для игровых видеокарт. Всё включено в сбалансированном качестве.
+profile.ULTRA=§6Ультра
+profile.ULTRA.comment=Для мощных видеокарт. Больше разрешение теней и шагов трассировки.
+profile.EXTREME=§cЭкстремальный
+profile.EXTREME.comment=Максимальное качество. Карта теней 4096, дальность теней 256 блоков.
+profile.CINEMATIC=§dКинематографичный
+profile.CINEMATIC.comment=Максимальный визуальный эффект для скриншотов: глубина резкости, смаз, зерно.
