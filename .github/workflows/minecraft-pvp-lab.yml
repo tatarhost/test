@@ -2,7 +2,7 @@ name: Minecraft PvP Lab build
 
 on:
   push:
-    branches: [minecraft-pvp-lab]
+    branches: [minecraft-pvp-lab, minecraft-pvp-lab-v2]
     paths:
       - "minecraft-pvp-lab/**"
       - ".github/workflows/minecraft-pvp-lab.yml"
