@@ -57,7 +57,7 @@ public final class PvPLabScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context);
+        renderBackground(context, mouseX, mouseY, delta);
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("P V P   L A B"), width / 2, 30, 0xFFFFFF);
         context.drawCenteredTextWithShadow(textRenderer,
                 Text.literal("Q-learning · self-play · Fabric 1.20.4"), width / 2, 46, 0xA9B5C4);
