@@ -1,4 +1,3 @@
-// Java 17, Fabric 1.20.4 — versioned model persistence in config/pvplab/models.
 package dev.tatarhost.pvplab;
 
 import com.google.gson.Gson;
@@ -13,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 
+/** Stores the current Q table and the best-ever elite policy. */
 final class ModelStore {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path MODEL_DIR = FabricLoader.getInstance()
@@ -24,11 +24,13 @@ final class ModelStore {
         Path file = resolve(name);
         Files.createDirectories(MODEL_DIR);
         Snapshot snapshot = new Snapshot();
-        snapshot.format = 1;
+        snapshot.format = 2;
         snapshot.epsilon = QPolicy.epsilon();
         snapshot.updates = QPolicy.updates();
+        snapshot.generations = QPolicy.generations();
+        snapshot.bestFitness = QPolicy.bestFitness();
         snapshot.values = QPolicy.snapshot();
-
+        snapshot.elite = QPolicy.eliteSnapshot();
         try (Writer writer = Files.newBufferedWriter(file)) {
             GSON.toJson(snapshot, writer);
         }
@@ -38,13 +40,14 @@ final class ModelStore {
     static boolean load(String name) throws IOException {
         Path file = resolve(name);
         if (!Files.isRegularFile(file)) return false;
-
         try (Reader reader = Files.newBufferedReader(file)) {
             Snapshot snapshot = GSON.fromJson(reader, Snapshot.class);
-            if (snapshot == null || snapshot.format != 1 || snapshot.values == null) {
+            if (snapshot == null || (snapshot.format != 1 && snapshot.format != 2)
+                    || snapshot.values == null) {
                 throw new JsonParseException("Unsupported or incomplete PvP Lab model");
             }
-            QPolicy.restore(snapshot.values, snapshot.epsilon, snapshot.updates);
+            QPolicy.restore(snapshot.values, snapshot.elite, snapshot.epsilon,
+                    snapshot.updates, snapshot.generations, snapshot.bestFitness);
             return true;
         }
     }
@@ -63,6 +66,9 @@ final class ModelStore {
         int format;
         double epsilon;
         long updates;
+        long generations;
+        double bestFitness;
         Map<String, double[]> values;
+        Map<String, double[]> elite;
     }
 }
