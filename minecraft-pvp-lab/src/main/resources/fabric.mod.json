@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "pvplab",
+  "version": "${version}",
+  "name": "PvP Lab",
+  "description": "Self-play reinforcement-learning sparring bots for Minecraft 1.20.4.",
+  "authors": ["tatarhost"],
+  "contact": {
+    "sources": "https://github.com/tatarhost/test/tree/minecraft-pvp-lab/minecraft-pvp-lab"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.tatarhost.pvplab.PvPLabMod"],
+    "client": ["dev.tatarhost.pvplab.PvPLabClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "1.20.4",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
