@@ -1,57 +1,49 @@
 # PvP Lab — Fabric 1.20.4
 
-A Fabric mod with unarmed sparring bots, self-play training, a tabular Q-learning policy, an in-game control screen, and named model snapshots.
+PvP Lab is a 50-agent Minecraft training arena. It runs 25 pairs of visible humanoid villager agents in parallel and trains a shared reinforcement-learning policy for defensive movement, spacing, evasive navigation, and target tracking.
 
-## Features
+## What's included
 
-- Two bots spar against each other.
-- Self-play runs a configurable number of rounds and respawns the pair between rounds.
-- The shared Q-table learns movement choices with reward feedback: damage dealt, damage received, and spacing.
-- Challenge mode spawns one bot that spars against the player.
+- 50 visible agents with iron armor, arranged as 25 training pairs.
+- Parallel self-play: all agents collect observations and contribute reward feedback to a shared Q-learning policy.
+- Eight learned movement actions: orbiting, lateral repositioning, retreating, changing distance, and jumping.
+- Generation-based evaluation with an elite checkpoint. The best policy is retained; weaker generations restore the champion and perturb the policy.
+- Automatic snapshots: \`latest.json\` after every generation and \`champion.json\` whenever a new best fitness is recorded.
+- Manual save/load for named models.
+- A single training-partner mode that observes player movement and practises spacing.
 - Press **K** to open the GUI.
-- Save/load learned models as JSON in `config/pvplab/models/`.
-- Server-side commands work in singleplayer and on a Fabric server with the mod installed.
 
-Bots are intentionally unarmed. Their movement policy is learned by Q-learning; Minecraft's regular mob AI handles close-range contact.
+Agents are training avatars, not real player connections. This build focuses on movement and defensive positioning; it does not implement weapon use, attacks, explosions, crystal PvP, or automated player control.
 
 ## Commands
 
-```
-/pvplab duel
-/pvplab challenge
-/pvplab train 500
+\`\`\`
+/pvplab train             # 50 agents, 5 minutes
+/pvplab train 900         # 50 agents, 15 minutes (60–3600 seconds)
+/pvplab challenge         # one movement-training partner
+/pvplab status
 /pvplab stop
-/pvplab save default
-/pvplab load default
-```
+/pvplab save champion
+/pvplab load champion
+\`\`\`
 
-The GUI has buttons for the same actions. The model name field accepts letters, digits, underscores, and hyphens.
-
-## Build
-
-Requirements: JDK 17 and Gradle 8.7.
-
-```sh
-gradle build
-```
-
-The remapped mod JAR is created in `build/libs/`.
-
-## Install
-
-1. Install Fabric Loader for Minecraft Java 1.20.4.
-2. Put the matching Fabric API 1.20.4 JAR in the `mods` folder.
-3. Put `pvplab-1.0.0.jar` in the same `mods` folder.
-4. Start a world, press **K**, or run one of the commands.
-
-For multiplayer, install the mod on the server and on clients that need the GUI. The training and model state run on the server.
+Each generation lasts 60 seconds. The default five-minute session therefore evaluates five generations. The arena is created around the player; use a reasonably open area.
 
 ## Model files
 
-Use **Сохранить модель** / **Загрузить модель** in the GUI or the matching commands. JSON snapshots are stored in:
+\`\`\`
+.minecraft/config/pvplab/models/latest.json
+.minecraft/config/pvplab/models/champion.json
+\`\`\`
 
-```
-.minecraft/config/pvplab/models/
-```
+Model format 2 stores the current Q-table, elite table, exploration rate, generation counter, update count, and best fitness. Format 1 snapshots from the earlier prototype remain loadable.
 
-Copy a JSON snapshot into that folder to import it by name. Existing snapshots are not overwritten unless you save again with the same name.
+## Build and install
+
+Requirements: JDK 17 and Gradle 8.7.
+
+\`\`\`sh
+gradle build
+\`\`\`
+
+Install Fabric Loader and Fabric API for Minecraft 1.20.4, then put \`pvplab-1.0.0.jar\` into \`.minecraft/mods/\`. Open the GUI with **K** or use the commands above. For server play, install the mod on the server and on clients that need the GUI.
