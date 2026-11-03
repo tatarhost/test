@@ -91,7 +91,7 @@ public final class PvPLabMod implements ModInitializer {
                                         feedback(context.getSource(), "Ошибка загрузки: " + exception.getMessage());
                                     }
                                     return 1;
-                                }))
+                                })))
                         )
         );
 
